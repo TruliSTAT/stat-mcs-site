@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — STAT MCS | Medical Courier & Mortuary Transport</title>
+  <meta name="description" content="STAT MCS offers mortuary transport, organ and tissue couriers, and white glove surgeon transport across the greater Houston area. Available 24/7/365." />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0a; --bg2: #111111; --bg3: #181818;
+      --white: #f5f0eb; --gold: #c9a84c; --muted: rgba(245,240,235,0.5);
+      --border: rgba(245,240,235,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 400; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    nav .logo img { height: 36px; width: auto; display: block; }
+    nav .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    nav .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; }
+    nav .nav-links a:hover, nav .nav-links a.active { color: var(--white); }
+    nav .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    nav .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 99; padding: 2rem 2.5rem; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; color: var(--muted); text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--white); }
+
+    /* PAGE HERO */
+    .page-hero { padding: 160px 2rem 80px; text-align: center; border-bottom: 1px solid var(--border); }
+    .page-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 6vw, 72px); font-weight: 300; color: var(--white); margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin: 0 auto; }
+
+    /* WINGS DIVIDER */
+    .wings-divider { text-align: center; padding: 1rem 0; }
+    .wings-divider img { height: 28px; width: auto; opacity: 0.4; filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(1.2); }
+
+    /* SERVICE SECTION */
+    .service-full {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service-full:last-of-type { border-bottom: none; }
+
+    .service-icon-col { text-align: center; padding-top: 0.5rem; }
+    .service-icon-large { font-size: 4rem; display: block; margin-bottom: 1rem; }
+    .service-num { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+
+    .service-content h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; color: var(--white); margin-bottom: 1.5rem; line-height: 1.2; }
+    .service-content p { font-size: 0.95rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.5rem; }
+
+    .btn-gold { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: #0a0a0a; padding: 0.875rem 2rem; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.25s; border: 1px solid var(--gold); }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+
+    .service-detail-list { list-style: none; margin: 1.25rem 0; }
+    .service-detail-list li { font-size: 0.85rem; color: var(--muted); padding: 0.4rem 0; padding-left: 1.2rem; position: relative; border-bottom: 1px solid rgba(245,240,235,0.06); }
+    .service-detail-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.7rem; }
+
+    /* FCR BAND */
+    .fcr-band { background: var(--gold); padding: 5rem 2rem; text-align: center; }
+    .fcr-band h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 600; color: #0a0a0a; margin-bottom: 1rem; }
+    .fcr-band p { font-size: 1rem; color: rgba(10,10,10,0.7); max-width: 540px; margin: 0 auto 2rem; }
+    .btn-dark { display: inline-flex; align-items: center; gap: 0.5rem; background: #0a0a0a; color: var(--white); padding: 0.875rem 2rem; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid #0a0a0a; transition: all 0.25s; }
+    .btn-dark:hover { background: transparent; color: #0a0a0a; }
+
+    /* FOOTER */
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 4rem 2.5rem 2.5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+    .footer-logo img { height: 32px; width: auto; margin-bottom: 1rem; opacity: 0.85; }
+    .footer-tagline { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+    .footer-contact a { display: block; font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; margin-bottom: 0.25rem; }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
+    .footer-links a { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(245,240,235,0.3); }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      nav .nav-links { display: none; }
+      nav .hamburger { display: flex; }
+      .service-full { grid-template-columns: 1fr; gap: 2rem; }
+      .service-icon-col { text-align: left; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-links { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="./index.html"><img src="./assets/logo-white.png" alt="STAT MCS" /></a>
+  <ul class="nav-links">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./services.html" class="active">Services</a></li>
+    <li><a href="./about.html">About</a></li>
+    <li><a href="./contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="./index.html">Home</a>
+  <a href="./services.html">Services</a>
+  <a href="./about.html">About</a>
+  <a href="./contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <p class="page-eyebrow">STAT MCS Services</p>
+  <h1>Our Services</h1>
+  <p>Precision transport for the medical community — delivered with dignity, speed, and discretion.</p>
+</header>
+
+<!-- SERVICE 1: MORTUARY -->
+<div class="service-full fade-up">
+  <div class="service-icon-col">
+    <span class="service-icon-large">🕊️</span>
+    <span class="service-num">Service 01</span>
+  </div>
+  <div class="service-content">
+    <h2>Mortuary Transport<br/>&amp; Removals</h2>
+    <p>As your trusted removal partner, we handle every call with dignity and discretion. We serve residential, hospital, hospice, nursing home, medical examiner, and funeral home-to-funeral home transports throughout the Houston metropolitan area. Our drivers are trained, uniformed, and available around the clock.</p>
+    <ul class="service-detail-list">
+      <li>Residential removals</li>
+      <li>Hospital &amp; hospice transfers</li>
+      <li>Nursing home transport</li>
+      <li>Medical examiner coordination</li>
+      <li>Funeral home to funeral home</li>
+      <li>Available 24/7/365</li>
+    </ul>
+    <a href="https://firstcallremovals.com" target="_blank" rel="noopener" class="btn-gold">Submit a Call via firstcallremovals.com &rarr;</a>
+  </div>
+</div>
+
+<div class="wings-divider"><img src="./assets/favicon.svg" alt="" /></div>
+
+<!-- SERVICE 2: ORGAN/TISSUE -->
+<div class="service-full fade-up">
+  <div class="service-icon-col">
+    <span class="service-icon-large">🧬</span>
+    <span class="service-num">Service 02</span>
+  </div>
+  <div class="service-content">
+    <h2>Organ, Tissue<br/>&amp; Blood Couriers</h2>
+    <p>We proudly serve OPOs, hospitals, tissue and blood banks, clinics, laboratories, and health care businesses throughout Southeast Texas. Every courier is laser-focused on chain of custody and safe, fast delivery — because timing is everything.</p>
+    <ul class="service-detail-list">
+      <li>Organ procurement organizations (OPOs)</li>
+      <li>Hospital-to-hospital organ transport</li>
+      <li>Tissue &amp; blood bank couriers</li>
+      <li>Clinical specimen transport</li>
+      <li>Laboratory logistics</li>
+      <li>Chain-of-custody documentation</li>
+    </ul>
+  </div>
+</div>
+
+<div class="wings-divider"><img src="./assets/favicon.svg" alt="" /></div>
+
+<!-- SERVICE 3: SURGEON -->
+<div class="service-full fade-up">
+  <div class="service-icon-col">
+    <span class="service-icon-large">✈️</span>
+    <span class="service-num">Service 03</span>
+  </div>
+  <div class="service-content">
+    <h2>White Glove Surgeon<br/>&amp; Medical Device Transport</h2>
+    <p>Delivering an exceptional travel experience to medical professionals and their equipment. Seamless airport pickup, priority hospital drop-off, return journey comfort, and impeccable service. Always 24/7/365.</p>
+    <ul class="service-detail-list">
+      <li>Airport pickup &amp; drop-off</li>
+      <li>Priority hospital arrival logistics</li>
+      <li>Surgical equipment transport</li>
+      <li>Return journey coordination</li>
+      <li>Medical device courier</li>
+      <li>Discreet, uniformed drivers</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FCR BAND -->
+<section class="fcr-band">
+  <h2>Funeral Home? Submit Your<br/>Next Removal Online.</h2>
+  <p>Our First Call Removals portal gives you instant dispatch, real-time tracking, and paperless invoicing.</p>
+  <a href="https://firstcallremovals.com" target="_blank" rel="noopener" class="btn-dark">Open firstcallremovals.com &rarr;</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><img src="./assets/logo-white.png" alt="STAT MCS" /></div>
+      <p class="footer-tagline">Compassionate. Reliable. Professional.</p>
+      <div class="footer-contact">
+        <a href="tel:+12819406525">(281) 940-6525</a>
+        <a href="mailto:Statmcs.com@gmail.com">Statmcs.com@gmail.com</a>
+        <a href="#">Cypress, TX</a>
+      </div>
+    </div>
+    <nav class="footer-links">
+      <a href="./index.html">Home</a>
+      <a href="./services.html">Services</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+      <a href="https://firstcallremovals.com" target="_blank" rel="noopener">First Call Removals</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 STAT MCS LLC. All Rights Reserved.</span>
+    <span>statmcs.com</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileNav').classList.toggle('open'); }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
