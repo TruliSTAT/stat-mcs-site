@@ -170,6 +170,28 @@
       max-width: 900px;
     }
 
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 40px);
+      margin-bottom: 32px;
+    }
+    .hero-brand-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 10vw, 120px);
+      font-weight: 700;
+      color: #f5f0eb;
+      letter-spacing: clamp(8px, 2vw, 24px);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .hero-brand-logo {
+      height: clamp(48px, 8vw, 96px);
+      width: auto;
+      filter: brightness(0) invert(1);
+      flex-shrink: 0;
+    }
     .hero-eyebrow {
       font-size: 0.65rem;
       font-weight: 500;
@@ -578,9 +600,13 @@
     <img src="./assets/favicon.svg" alt="" />
   </div>
   <div class="hero-content">
-    <p class="hero-eyebrow">STAT MCS — Cypress, TX</p>
+    <div class="hero-brand">
+      <span class="hero-brand-text">STAT</span>
+      <img src="./assets/logo-white.png" alt="STAT MCS" class="hero-brand-logo" />
+      <span class="hero-brand-text">MCS</span>
+    </div>
     <h1>When Every<br/>Minute Matters</h1>
-    <p>STAT MCS delivers compassionate, professional medical courier and mortuary transport services across the greater Houston area. Available 24/7/365.</p>
+    <p>Compassionate, professional medical courier and mortuary transport services across the greater Houston area. Available 24/7/365.</p>
     <div class="hero-buttons">
       <a href="https://firstcallremovals.com" target="_blank" rel="noopener" class="btn-gold">Submit a Transport Request &rarr;</a>
       <a href="./services.html" class="btn-ghost">Our Services &rarr;</a>
